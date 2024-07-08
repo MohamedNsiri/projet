@@ -11,6 +11,7 @@ import { ProductManagementComponent } from './product-management/product-managem
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { OwnerTableComponent } from './owner-table/owner-table.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { OwnerTableComponent } from './owner-table/owner-table.component';
     HttpClientModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
