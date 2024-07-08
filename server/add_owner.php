@@ -22,6 +22,14 @@ if ($conn->connect_error) {
 $input = file_get_contents("php://input");
 $data = json_decode($input);
 
+$stmt_check = $conn->prepare("SELECT owner_id FROM owners WHERE owner_id = ?");
+$stmt_check->bind_param("s", $data->owner_id);
+$result = $stmt_check->fetch_assoc();
+
+if($row['count'] > 0){
+  
+}
+
 // Debug: Check if data is received correctly
 if ($data === null) {
     echo json_encode(["message" => "No data received", "input" => $input, "json_error" => json_last_error_msg()]);
