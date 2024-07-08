@@ -1,47 +1,45 @@
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { error } from 'console';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-owner-table',
   templateUrl: './owner-table.component.html',
-  styleUrl: './owner-table.component.css'
+  styleUrls: ['./owner-table.component.css']
 })
-export class OwnerTableComponent {
-  owners: any[] = [];
-  emptyMessage: string = '';
+export class OwnerTableComponent implements OnInit {
 
-  fetchOwners(){
-    this.http.get<any[]>('http://localhost/project/select_owner.php')
-    .subscribe(
-      (data) => {
-        this.owners = data;
-      },
-      (error) => {
-        console.error('Error fetching owners:', error);
-      }
-    );
-  }
+  constructor(private http: HttpClient, public _shared: SharedService) { }
 
   ngOnInit() {
     this.fetchOwners();
   }
 
-  deleteOwner(id : number){
-    this.http.delete<any>('http://localhost/project/delete_owner.php?id=' + id)
-      .subscribe(
-        (response) => {
+  fetchOwners() {
+    this._shared.fetchOwners().subscribe(
+      data => {
+        this._shared.owners = data;
+      },
+      error => {
+        console.error('Error fetching owners:', error);
+      }
+    );
+  }
+
+  deleteOwner(id: number) {
+    if (confirm('Are you sure you want to delete this owner?')) {
+      this._shared.deleteOwner(id).subscribe(
+        response => {
           console.log('Owner deleted successfully:', response);
-          window.location.reload();
           this.fetchOwners();
         },
-        (error) => {
+        error => {
           console.error('Error deleting owner:', error);
         }
       );
+    }
   }
-  editOwner(id : number){}
 
-  constructor(private http: HttpClient){
+  editOwner(id: number) {
   }
 }
