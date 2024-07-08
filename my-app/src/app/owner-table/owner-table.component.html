@@ -1,0 +1,7 @@
+<div class="translate-y-[250px] translate-x-[250px]">
+    <h2>Owners List</h2>
+    <ul>
+      <li *ngFor="let owner of owners">{{ owner.owner_id }} - {{ owner.owner_name }} <button (click)="deleteOwner(owner.owner_id)" class="mr-5">Delete</button> <button (click)="editOwner(owner.owner_id)">Edit</button></li>
+    </ul>
+    <p *ngIf="this.owners.length == 0">Owners Table Is Empty</p>
+</div>

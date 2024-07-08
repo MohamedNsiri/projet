@@ -10,6 +10,7 @@ import { OwnerManagementComponent } from './owner-management/owner-management.co
 import { ProductManagementComponent } from './product-management/product-management.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { OwnerTableComponent } from './owner-table/owner-table.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     AllComponent,
     HeaderComponent,
     OwnerManagementComponent,
-    ProductManagementComponent
+    ProductManagementComponent,
+    OwnerTableComponent
   ],
   imports: [
     BrowserModule,

@@ -4,5 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SharedService {
+
+  owners :any[] = [];
+
+  constructor(public _shared: SharedService){}
 }
 
