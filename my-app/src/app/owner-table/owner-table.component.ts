@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-owner-table',
@@ -39,6 +40,8 @@ export class OwnerTableComponent implements OnInit {
       );
     }
   }
+
+  
 
   editOwner(id: number) {
   }

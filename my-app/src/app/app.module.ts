@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { OwnerTableComponent } from './owner-table/owner-table.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { DeletionConfirmationDialogComponent } from './deletion-confirmation-dialog/deletion-confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,16 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     HeaderComponent,
     OwnerManagementComponent,
     ProductManagementComponent,
-    OwnerTableComponent
+    OwnerTableComponent,
+    DeletionConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
     provideClientHydration(),
