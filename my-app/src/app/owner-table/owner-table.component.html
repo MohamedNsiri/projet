@@ -33,6 +33,9 @@
                 <button (click)="editOwner(owner.owner_id)" class="text-indigo-600 hover:text-indigo-900">Edit</button>
               </td>
             </tr>
+            <tr class="border-t border-gray-300">
+              <td *ngIf="verifyTableContent()" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"> NO OWNERS</td>
+            </tr>
           </tbody>
         </table>
       </div>

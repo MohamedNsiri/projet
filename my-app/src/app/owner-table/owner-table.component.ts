@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared.service';
-import { MatDialog } from '@angular/material/dialog';
+import { NavigationEnd, Router } from '@angular/router';
+import { log } from 'console';
 
 @Component({
   selector: 'app-owner-table',
@@ -10,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class OwnerTableComponent implements OnInit {
 
-  constructor(private http: HttpClient, public _shared: SharedService) { }
+  constructor(private http: HttpClient, public _shared: SharedService, private router: Router) { }
 
   ngOnInit() {
     this.fetchOwners();
@@ -29,20 +30,50 @@ export class OwnerTableComponent implements OnInit {
 
   deleteOwner(id: number) {
     if (confirm('Are you sure you want to delete this owner?')) {
-      this._shared.deleteOwner(id).subscribe(
-        response => {
-          console.log('Owner deleted successfully:', response);
-          this.fetchOwners();
-        },
-        error => {
-          console.error('Error deleting owner:', error);
-        }
-      );
+      // Make HTTP DELETE request
+      if(this._shared.owners.length >= 2){
+        this.http.delete(`http://localhost/project/delete_owner.php?id=${id}`)
+        .subscribe(
+          response => {
+            console.log("length ="+this._shared.owners.length)
+            console.log('Owner deleted successfully:', response);
+            
+            this.fetchOwners(); // Refresh owners after deletion
+            
+          },
+          error => {
+
+            console.error('Error deleting owner:', error);
+          }
+        );
+      }else{
+        this.http.delete(`http://localhost/project/delete_owner.php?id=${id}`)
+        .subscribe(
+          response => {
+            console.log("length ="+this._shared.owners.length)
+            console.log('Owner deleted successfully:', response);
+            this.fetchOwners();
+            this.router.navigate(['/owner_management/owner_table']); // Refresh owners after deletion
+          },
+          error => {
+
+            console.error('Error deleting owner:', error);
+          }
+        );
+      }
+     
+      
     }
   }
 
-  
+  verifyTableContent(): boolean{
+    if(this._shared.owners.length == 0){
+      return true;
+    }
+    return false;
+  }
 
   editOwner(id: number) {
+    // Implement edit functionality if needed
   }
 }
