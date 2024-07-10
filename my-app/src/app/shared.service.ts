@@ -21,4 +21,17 @@ export class SharedService {
   addOwner(owner: any) {
     return this.http.post<any>('http://localhost/project/add_owner.php', owner);
   }
+
+  editOwner(owner_id: number, owner_name: string) {
+    this.http.post<any>('http://localhost/project/edit_owner.php', owner_id).subscribe(
+      response => {
+        if (response.message === 'User Updated successfully') {
+
+        } else {
+        }
+      },
+      error => {
+      }
+    );
+  }
 }

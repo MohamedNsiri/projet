@@ -15,6 +15,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { DeletionConfirmationDialogComponent } from './deletion-confirmation-dialog/deletion-confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { OwnerEditComponent } from './owner-edit/owner-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button';
     OwnerManagementComponent,
     ProductManagementComponent,
     OwnerTableComponent,
-    DeletionConfirmationDialogComponent
+    DeletionConfirmationDialogComponent,
+    OwnerEditComponent
   ],
   imports: [
     BrowserModule,

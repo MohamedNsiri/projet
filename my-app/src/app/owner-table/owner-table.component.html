@@ -30,7 +30,7 @@
                 <button (click)="deleteOwner(owner.owner_id)" class="text-red-600 hover:text-red-900">Delete</button>
               </td>
               <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-3">
-                <button (click)="editOwner(owner.owner_id)" class="text-indigo-600 hover:text-indigo-900">Edit</button>
+                <button [routerLink]="['/owner_edit', owner.owner_id, owner.owner_name]" (click)="_shared.editOwner(owner.owner_id, owner.owner_name)" class="text-indigo-600 hover:text-indigo-900">Edit</button>
               </td>
             </tr>
             <tr class="border-t border-gray-300">

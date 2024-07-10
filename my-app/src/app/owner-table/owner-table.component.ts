@@ -30,19 +30,14 @@ export class OwnerTableComponent implements OnInit {
 
   deleteOwner(id: number) {
     if (confirm('Are you sure you want to delete this owner?')) {
-      // Make HTTP DELETE request
       if(this._shared.owners.length >= 2){
         this.http.delete(`http://localhost/project/delete_owner.php?id=${id}`)
         .subscribe(
           response => {
-            console.log("length ="+this._shared.owners.length)
             console.log('Owner deleted successfully:', response);
-            
-            this.fetchOwners(); // Refresh owners after deletion
-            
+            this.fetchOwners();            
           },
           error => {
-
             console.error('Error deleting owner:', error);
           }
         );
@@ -50,7 +45,6 @@ export class OwnerTableComponent implements OnInit {
         this.http.delete(`http://localhost/project/delete_owner.php?id=${id}`)
         .subscribe(
           response => {
-            console.log("length ="+this._shared.owners.length)
             console.log('Owner deleted successfully:', response);
             this.fetchOwners();
           },
@@ -59,9 +53,7 @@ export class OwnerTableComponent implements OnInit {
             console.error('Error deleting owner:', error);
           }
         );
-      }
-     
-      
+      }     
     }
   }
 
@@ -70,9 +62,5 @@ export class OwnerTableComponent implements OnInit {
       return true;
     }
     return false;
-  }
-
-  editOwner(id: number) {
-    // Implement edit functionality if needed
   }
 }
