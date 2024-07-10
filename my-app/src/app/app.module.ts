@@ -16,6 +16,7 @@ import { DeletionConfirmationDialogComponent } from './deletion-confirmation-dia
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { OwnerEditComponent } from './owner-edit/owner-edit.component';
+import { ActivatedRoute } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { OwnerEditComponent } from './owner-edit/owner-edit.component';
     FormsModule,
     HttpClientModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    ActivatedRoute
   ],
   providers: [
     provideClientHydration(),
