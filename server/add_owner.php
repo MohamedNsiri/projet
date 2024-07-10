@@ -3,6 +3,7 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: GET");
 
 // Database connection (replace with your actual database credentials)
 $servername = "localhost";
@@ -21,14 +22,6 @@ if ($conn->connect_error) {
 // Get the posted data
 $input = file_get_contents("php://input");
 $data = json_decode($input);
-
-$stmt_check = $conn->prepare("SELECT owner_id FROM owners WHERE owner_id = ?");
-$stmt_check->bind_param("s", $data->owner_id);
-$result = $stmt_check->fetch_assoc();
-
-if($row['count'] > 0){
-  
-}
 
 // Debug: Check if data is received correctly
 if ($data === null) {

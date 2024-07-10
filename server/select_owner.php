@@ -1,4 +1,8 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: GET");
 // Database connection (replace with your actual database credentials)
 $servername = "localhost";
 $username = "root";
@@ -28,7 +32,7 @@ if ($result->num_rows > 0) {
     header('Content-Type: application/json');
     echo json_encode($owners);
 } else {
-    echo "No owners found";
+    echo json_encode([]);
 }
 $conn->close();
 ?>
