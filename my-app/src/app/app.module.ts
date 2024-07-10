@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { OwnerTableComponent } from './owner-table/owner-table.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { DeletionConfirmationDialogComponent } from './deletion-confirmation-dialog/deletion-confirmation-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { OwnerEditComponent } from './owner-edit/owner-edit.component';
@@ -27,7 +26,6 @@ import { ActivatedRoute } from '@angular/router';
     OwnerManagementComponent,
     ProductManagementComponent,
     OwnerTableComponent,
-    DeletionConfirmationDialogComponent,
     OwnerEditComponent
   ],
   imports: [
@@ -36,8 +34,7 @@ import { ActivatedRoute } from '@angular/router';
     FormsModule,
     HttpClientModule,
     MatDialogModule,
-    MatButtonModule,
-    ActivatedRoute
+    MatButtonModule
   ],
   providers: [
     provideClientHydration(),

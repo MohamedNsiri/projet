@@ -1,24 +1,24 @@
 <div class=" ml-60 mt-12 translate-y-[100px]">
-    <h2 class="text-base font-semibold leading-7 text-gray-900">Add Owner</h2>
+    <h2 class="text-base font-semibold leading-7 text-gray-900">Edit Owner</h2>
     <p class="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p>
   
     <div class="mt-10 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-6">
       <div class="sm:col-span-3">
         <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Fullname</label>
         <div class="mt-2">
-          <input required [(ngModel)]="owner.owner_name" type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-[300px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <input required [(ngModel)]="updated_owner_name" type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-[300px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
         </div>
       </div>
 
       <div class="sm:col-span-4">
         <label for="id" class="block text-sm font-medium leading-6 text-gray-900">Id</label>
         <div class="mt-2">
-          <input required [(ngModel)]="owner.owner_id" id="id" name="id" type="number" autocomplete="email" class="block w-[300px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          <p class="block w-[300px] rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"> {{owner.owner_id}} </p>
         </div>
       </div>
 
       <div class="translate-y-[32px] -translate-x-[500px]">
-          <button type="submit" class="mb-16 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update Owner</button>
+          <button (click)="editOwner()" type="submit" class="mb-16 rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Update Owner</button>
           <button routerLink="/owner_management/owner_table" type="submit" class="absolute ml-10 w-[200px] rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Show Owners Table</button>
       </div>
     </div>

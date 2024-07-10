@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared.service';
 import { NavigationEnd, Router } from '@angular/router';
-import { log } from 'console';
 
 @Component({
   selector: 'app-owner-table',
@@ -11,51 +10,26 @@ import { log } from 'console';
 })
 export class OwnerTableComponent implements OnInit {
 
-  constructor(private http: HttpClient, public _shared: SharedService, private router: Router) { }
+  constructor(public _shared: SharedService, private router: Router) { }
 
   ngOnInit() {
-    this.fetchOwners();
-  }
-
-  fetchOwners() {
-    this._shared.fetchOwners().subscribe(
-      data => {
-        this._shared.owners = data;
-      },
-      error => {
-        console.error('Error fetching owners:', error);
-      }
-    );
+    this._shared.fetchOwners();
   }
 
   deleteOwner(id: number) {
     if (confirm('Are you sure you want to delete this owner?')) {
-      if(this._shared.owners.length >= 2){
-        this.http.delete(`http://localhost/project/delete_owner.php?id=${id}`)
+      this._shared.deleteOwner(id)
         .subscribe(
           response => {
             console.log('Owner deleted successfully:', response);
-            this.fetchOwners();            
+            this._shared.fetchOwners();            
           },
           error => {
             console.error('Error deleting owner:', error);
           }
-        );
-      }else{
-        this.http.delete(`http://localhost/project/delete_owner.php?id=${id}`)
-        .subscribe(
-          response => {
-            console.log('Owner deleted successfully:', response);
-            this.fetchOwners();
-          },
-          error => {
-            this.fetchOwners();
-            console.error('Error deleting owner:', error);
-          }
-        );
+        )
       }     
     }
-  }
 
   verifyTableContent(): boolean{
     if(this._shared.owners.length == 0){

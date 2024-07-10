@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -17,12 +16,11 @@ export class OwnerManagementComponent {
   message: string = '';
   messageColor: string = '';
 
-  constructor(private http: HttpClient, public _shared: SharedService) { }
+  constructor(public _shared: SharedService) { }
 
   addOwner() {
     this._shared.addOwner(this.owner).subscribe(
       response => {
-        console.log(response);
         if (response.message === 'User added successfully') {
           this._shared.owners.push(this.owner); 
           this.messageColor = 'lightgreen';
