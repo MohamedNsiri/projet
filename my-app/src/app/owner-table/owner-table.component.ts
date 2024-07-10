@@ -53,10 +53,9 @@ export class OwnerTableComponent implements OnInit {
             console.log("length ="+this._shared.owners.length)
             console.log('Owner deleted successfully:', response);
             this.fetchOwners();
-            this.router.navigate(['/owner_management/owner_table']); // Refresh owners after deletion
           },
           error => {
-
+            this.fetchOwners();
             console.error('Error deleting owner:', error);
           }
         );
