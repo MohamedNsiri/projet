@@ -37,4 +37,5 @@ export class OwnerTableComponent implements OnInit {
     }
     return false;
   }
+  
 }
