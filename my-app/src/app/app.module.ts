@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { OwnerEditComponent } from './owner-edit/owner-edit.component';
 import { ActivatedRoute } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ActivatedRoute } from '@angular/router';
     OwnerManagementComponent,
     ProductManagementComponent,
     OwnerTableComponent,
-    OwnerEditComponent
+    OwnerEditComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

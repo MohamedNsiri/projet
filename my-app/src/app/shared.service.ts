@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
+
+  products: any[] = [];
+
+  addProduct(product: any){
+    return this.http.post<any>('http://localhost/project/add_product.php', product);
+  }
   
   owners: any[] = [];
   

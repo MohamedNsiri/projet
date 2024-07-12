@@ -5,8 +5,10 @@ import { OwnerManagementComponent } from './owner-management/owner-management.co
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { OwnerTableComponent } from './owner-table/owner-table.component';
 import { OwnerEditComponent } from './owner-edit/owner-edit.component';
+import { AddProductComponent } from './add-product/add-product.component';
 
 const routes: Routes = [
+  { path: 'product_management/add_product', component: AddProductComponent },
   { path: 'owner_edit/:owner_id', component: OwnerEditComponent },
   { path: 'owner_edit', component: OwnerEditComponent },
   { path: 'owner_management/owner_table', component: OwnerTableComponent},
