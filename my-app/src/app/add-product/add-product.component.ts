@@ -35,13 +35,14 @@ export class AddProductComponent {
             product_pic: '',
             owner_id: 0,
             product_desc: ''
-          }
+          };
+          this.message = response.message;
         } else {
-          // Handle other scenarios if needed
+          this.message = response.message;
         }
       },
       error => {
-        this.message = 'Error adding product'; // Handle HTTP errors here
+        this.message = 'Error adding product';
       }
     );
   }

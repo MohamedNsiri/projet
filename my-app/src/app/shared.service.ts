@@ -11,6 +11,18 @@ export class SharedService {
   addProduct(product: any){
     return this.http.post<any>('http://localhost/project/add_product.php', product);
   }
+
+  fetchProducts(){
+    this.http.get<any[]>('http://localhost/project/select_product.php').subscribe(
+      data => {
+        this.products = data;
+        console.log(this.products)
+      },
+      error => {
+        console.error('Error fetching owners:', error);
+      }
+    )
+  }
   
   owners: any[] = [];
   
